@@ -14,5 +14,3 @@ export default function generateEmojiMap() {
 	}
 	return emojiMap;
 }
-let map = generateEmojiMap();
-console.log(map);

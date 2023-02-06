@@ -1,15 +1,28 @@
 import Head from "next/head";
 import { useState } from "react";
-import generateEmojiMap from "../utils/generateEmojiMap";
+import { generateEmojiMap, generateRandomSentence } from "../utils";
 
-export default function Home({defaultMap}) {
-  const [sentence, setSentence] = useState("This is some dummy text");
-  const [emojiMap, setEmojiMap] = useState(defaultMap)
-  const regen = () => {
-	let newEmojiMap = generateEmojiMap()
-	setEmojiMap(newEmojiMap)
-  }
-  return (
+export default function Home({ defaultMap, defaultSentence }) {
+	const [sentence, setSentence] = useState(defaultSentence);
+	const [emojiMap, setEmojiMap] = useState(defaultMap);
+	const regenMap = () => {
+		let newEmojiMap = generateEmojiMap();
+		setEmojiMap(newEmojiMap);
+	};
+	const regenSentence = () => {
+		let newSentence = generateRandomSentence();
+		setSentence(newSentence);
+	}
+	const emojify = () => {
+		let emojified = sentence
+			.split("")
+			.map((char) => (emojiMap[char] ? emojiMap[char] : char));
+		console.log(emojified);
+	};
+	const [emojifiedSentence, setEmojifiedSentence] = useState(
+		emojify(defaultSentence)
+	);
+	return (
 		<div className="flex justify-center items-center text-center">
 			<Head>
 				<title>Emojigram</title>
@@ -25,37 +38,12 @@ export default function Home({defaultMap}) {
 					<h3 className="text-xl">
 						Cryptograms are boring. Let&apos;s do emojigrams!
 					</h3>
-					<h1>
-						Harcoded in HTML: &#8395;
-						<br />From emojiMap: {emojiMap.a}
-						<br />From emojiMap: {emojiMap.b}
-						<br />From emojiMap: {emojiMap.c}
-						<br />From emojiMap: {emojiMap.d}
-						<br />From emojiMap: {emojiMap.e}
-						<br />From emojiMap: {emojiMap.f}
-						<br />From emojiMap: {emojiMap.g}
-						<br />From emojiMap: {emojiMap.h}
-						<br />From emojiMap: {emojiMap.i}
-						<br />From emojiMap: {emojiMap.j}
-						<br />From emojiMap: {emojiMap.k}
-						<br />From emojiMap: {emojiMap.l}
-						<br />From emojiMap: {emojiMap.m}
-						<br />From emojiMap: {emojiMap.n}
-						<br />From emojiMap: {emojiMap.o}
-						<br />From emojiMap: {emojiMap.p}
-						<br />From emojiMap: {emojiMap.q}
-						<br />From emojiMap: {emojiMap.r}
-						<br />From emojiMap: {emojiMap.s}
-						<br />From emojiMap: {emojiMap.t}
-						<br />From emojiMap: {emojiMap.u}
-						<br />From emojiMap: {emojiMap.v}
-						<br />From emojiMap: {emojiMap.w}
-						<br />From emojiMap: {emojiMap.x}
-						<br />From emojiMap: {emojiMap.y}
-						<br />From emojiMap: {emojiMap.z}
-					</h1>
+					<h1>{sentence}</h1>
+					{/* <h1>{emojifiedSentence.map((char, i) => (char))}</h1> */}
 				</header>
-				<button onClick={regen}>Regenerate EmojiMap</button>
+				<button onClick={regenMap}>Regenerate EmojiMap</button>
+				<button onClick={emojify}>Emojify sentence</button>
+				<button onClick={regenSentence}>Regenerate sentence</button>
 
 				<section id="game" className="flex flex-col items-center space-y-4">
 					<p id="emoji-text" className="mx-auto">
@@ -70,11 +58,13 @@ export default function Home({defaultMap}) {
 }
 
 export function getServerSideProps() {
-    let emojiMap = generateEmojiMap();
-  console.log(emojiMap)
-  return {
-    props: {
-      defaultMap: emojiMap
-    }
-  }
+	let emojiMap = generateEmojiMap();
+	let sentence = generateRandomSentence();
+	console.log(`sentence: ${sentence}`);
+	return {
+		props: {
+			defaultMap: emojiMap,
+			defaultSentence: sentence,
+		},
+	};
 }

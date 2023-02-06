@@ -1,7 +1,7 @@
 import { emojis } from "./constants";
 
 export default function generateEmojiMap() {
-	const alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
+	const alphabet = "abcdefghijklmnopqrstuvwxyz1234567890".split("");
 
 	let emojiMap = {};
 	let emojiList = [...emojis];

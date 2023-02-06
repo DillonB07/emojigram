@@ -1,27 +1,23 @@
 import Head from "next/head";
 import { useState } from "react";
-import { generateEmojiMap, generateRandomSentence } from "../utils";
+import { generateEmojiMap, generateRandomSentence, emojify } from "../utils";
 
 export default function Home({ defaultMap, defaultSentence }) {
 	const [sentence, setSentence] = useState(defaultSentence);
 	const [emojiMap, setEmojiMap] = useState(defaultMap);
+	const [emojifiedSentence, setEmojifiedSentence] = useState(
+		emojify(defaultSentence, emojiMap)
+	);
 	const regenMap = () => {
 		let newEmojiMap = generateEmojiMap();
 		setEmojiMap(newEmojiMap);
+		setEmojifiedSentence(emojify(sentence, newEmojiMap));
 	};
 	const regenSentence = () => {
 		let newSentence = generateRandomSentence();
 		setSentence(newSentence);
-	}
-	const emojify = () => {
-		let emojified = sentence
-			.split("")
-			.map((char) => (emojiMap[char] ? emojiMap[char] : char));
-		console.log(emojified);
+		setEmojifiedSentence(emojify(newSentence, emojiMap));
 	};
-	const [emojifiedSentence, setEmojifiedSentence] = useState(
-		emojify(defaultSentence)
-	);
 	return (
 		<div className="flex justify-center items-center text-center">
 			<Head>
@@ -38,19 +34,30 @@ export default function Home({ defaultMap, defaultSentence }) {
 					<h3 className="text-xl">
 						Cryptograms are boring. Let&apos;s do emojigrams!
 					</h3>
-					<h1>{sentence}</h1>
-					{/* <h1>{emojifiedSentence.map((char, i) => (char))}</h1> */}
 				</header>
-				<button onClick={regenMap}>Regenerate EmojiMap</button>
-				<button onClick={emojify}>Emojify sentence</button>
-				<button onClick={regenSentence}>Regenerate sentence</button>
 
 				<section id="game" className="flex flex-col items-center space-y-4">
 					<p id="emoji-text" className="mx-auto">
-						{/* {sentence
-              .split("")
-              .map((char) => (emojiMap[char] ? emojiMap[char] : char))} */}
+						{sentence}
 					</p>
+					<p id="emoji-text" className="mx-auto">
+						{emojifiedSentence}
+					</p>
+					<button
+						className="p-2 m-2 bg-cyan-500 rounded-md "
+						onClick={regenMap}
+					>
+						Regenerate EmojiMap
+					</button>
+					<button className="p-2 m-2 bg-cyan-500 rounded-md " onClick={emojify}>
+						Emojify sentence
+					</button>
+					<button
+						className="p-2 m-2 bg-cyan-500 rounded-md "
+						onClick={regenSentence}
+					>
+						Regenerate sentence
+					</button>
 				</section>
 			</main>
 		</div>

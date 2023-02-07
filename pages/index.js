@@ -43,6 +43,9 @@ export default function Home({ defaultMap, defaultSentence }) {
 					<p id="emoji-text" className="mx-auto">
 						{emojifiedSentence}
 					</p>
+					<ul>
+						
+					</ul>
 					<button
 						className="p-2 m-2 bg-cyan-500 rounded-md "
 						onClick={regenMap}

@@ -26,5 +26,5 @@ export default function generateRandomSentence() {
 			adjective ? adjective + " " : ""
 		}${end}`;
 	}
-	return sentence;
+	return {sentence, theme: theme.name};
 }

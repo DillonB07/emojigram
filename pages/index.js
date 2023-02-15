@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { useState } from "react";
+import Swal from "sweetalert2";
 import { generateEmojiMap, generateRandomSentence, emojify } from "../utils";
 
 export default function Home({
@@ -8,7 +9,7 @@ export default function Home({
 	defaultAnswerMap,
 	defaultEmojifiedSentence,
 	defaultGuessMap,
-	defaultTheme
+	defaultTheme,
 }) {
 	const [sentence, setSentence] = useState(defaultSentence);
 	const [emojiMap, setEmojiMap] = useState(defaultEmojiMap);
@@ -18,25 +19,78 @@ export default function Home({
 	const [answerMap, setAnswerMap] = useState(defaultAnswerMap);
 	const [guessMap, setGuessMap] = useState(defaultGuessMap);
 	const [correct, setCorrect] = useState(false);
-	const [theme, setTheme] = useState(defaultTheme)
+	const [theme, setTheme] = useState(defaultTheme);
+	const [hintAllowed, setHintAllowed] = useState(false);
 
-		const regenSentence = () => {
-		let {sentence, theme} = generateRandomSentence();
-		let { emojifiedSentence, answerMap } = emojify(sentence, emojiMap);
-		let guessMap = [];
-		for (let i = 0; i < answerMap.length; i++) {
-			let chance = Math.floor(Math.random() * answerMap.length);
-			guessMap.push({
-				emoji: answerMap[i].emoji,
-				character: chance <= 2 ? answerMap[i].character : "",
+	const Toast = Swal.mixin({
+		toast: true,
+		position: "right",
+		showConfirmButton: true,
+	});
+
+	const getHint = () => {
+		let hints = [];
+		guessMap.forEach((guess) => {
+			let chance = Math.floor(Math.random() * guessMap.length);
+			// Check if it's not the correct character
+			if (guess.character !== answerMap[guessMap.indexOf(guess)].character) {
+				if (chance <= 2) {
+					hints.push({
+						emoji: guess.emoji,
+						character: answerMap[guessMap.indexOf(guess)].character,
+					});
+				}
+			}
+		});
+		let hint = hints[Math.floor(Math.random() * hints.length)];
+
+		if (hint) {
+			Toast.fire({
+				icon: "success",
+				title: "You got a hint!",
+				text:
+					'The gods have given you a hint: "' +
+					hint.character +
+					'" is "' +
+					hint.emoji +
+					'"',
+			});
+		} else {
+			Toast.fire({
+				icon: "error",
+				title: "The gods decided to not give you a hint this time.",
 			});
 		}
-		setSentence(sentence);
-		setEmojifiedSentence(emojifiedSentence);
-		setAnswerMap(answerMap);
-		setGuessMap(guessMap);
-		setCorrect(false);
-		setTheme(theme)
+		setHintAllowed(false);
+	};
+
+	const regenSentence = () => {
+		// let { sentence, theme } = generateRandomSentence();
+		// let { emojifiedSentence, answerMap } = emojify(sentence, emojiMap);
+		// let guessMap = [];
+		// for (let i = 0; i < answerMap.length; i++) {
+		// 	let chance = Math.floor(Math.random() * answerMap.length);
+		// 	guessMap.push({
+		// 		emoji: answerMap[i].emoji,
+		// 		character: chance <= 2 ? answerMap[i].character : "",
+		// 	});
+		// }
+
+		// guessMap = guessMap.filter((item, index) => {
+		// 	return guessMap.indexOf(item) === index;
+		// });
+
+		// answerMap.forEach((char) => {
+		// 	return JSON.stringify(char);
+		// });
+
+		// setSentence(sentence);
+		// setEmojifiedSentence(emojifiedSentence);
+		// setAnswerMap(answerMap);
+		// setGuessMap(guessMap);
+		// setCorrect(false);
+		// setTheme(theme);
+		window.location.reload();
 	};
 
 	const answerChange = (e, char) => {
@@ -50,6 +104,7 @@ export default function Home({
 		if (e.target.value.toLowerCase() == char.character) {
 			e.target.disabled = true;
 			e.target.style.borderColor = "green";
+			setHintAllowed(true);
 		} else {
 			e.target.style.borderColor = "red";
 		}
@@ -89,9 +144,9 @@ export default function Home({
 				</header>
 
 				<section id="game" className="flex flex-col items-center space-y-4">
-					<p id="emoji-text" className="mx-auto">
+					{/* <p id="emoji-text" className="mx-auto">
 						{sentence}
-					</p>
+					</p> */}
 					<p id="emoji-text" className="mx-auto">
 						{emojifiedSentence}
 						{/* <br />
@@ -113,13 +168,19 @@ export default function Home({
 						)} */}
 					</p>
 				</section>
-				<section>
+				{/* <button
+					onClick={regenSentence}
+					className="p-2 m-2 bg-cyan-500 rounded-md"
+				>
+					Regen
+				</button> */}
+				<section className="flex-col flex justify-center items-center">
 					<div className="list-none inline-flex justify-center items-center flex-wrap">
 						{answerMap.map((char) => (
 							<div key={char.character} className="">
 								<span>{char.emoji} :</span>
 								<input
-									className={`border-2 w-10 h-10 p-4 m-4 rounded-md text-center`}
+									className={`border-2 w-10 h-10 m-4 rounded-md text-center`}
 									contentEditable
 									defaultValue={guessMap[answerMap.indexOf(char)].character}
 									disabled={
@@ -141,6 +202,13 @@ export default function Home({
 							</div>
 						))}
 					</div>
+					<button
+						onClick={getHint}
+						disabled={!hintAllowed}
+						className={"p-2 m-2 bg-cyan-500 rounded-md" + (hintAllowed ? "" : " opacity-50 cursor-not-allowed")}
+					>
+						{hintAllowed ? 'Get Hint!' : 'Hint unavailable'}
+					</button>
 					{!correct ? (
 						<button
 							onClick={checkAnswer}
@@ -153,6 +221,7 @@ export default function Home({
 							Congratulations! You completed the emojigram.
 						</p>
 					)}
+				<textarea className="m-2 p-4" placeholder="Notes...." />
 				</section>
 			</main>
 		</div>
@@ -161,7 +230,7 @@ export default function Home({
 
 export function getServerSideProps() {
 	let emojiMap = generateEmojiMap();
-	let {sentence, theme} = generateRandomSentence();
+	let { sentence, theme } = generateRandomSentence();
 	let { emojifiedSentence, answerMap } = emojify(sentence, emojiMap);
 	let guessMap = [];
 	for (let i = 0; i < answerMap.length; i++) {
@@ -186,7 +255,7 @@ export function getServerSideProps() {
 			defaultAnswerMap: answerMap,
 			defaultEmojifiedSentence: emojifiedSentence,
 			defaultGuessMap: guessMap,
-			defaultTheme: theme
+			defaultTheme: theme,
 		},
 	};
 }

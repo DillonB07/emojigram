@@ -15,6 +15,5 @@ export default function emojify(sentence, emojiMap) {
 			index === self.findIndex((t) => t.character === answer.character)
 	);
 
-	console.log("Func-answerMap: ", answerMap);
 	return { emojifiedSentence, answerMap };
 }

@@ -69,6 +69,13 @@ export default function index() {
 							</button>
 						</Link>
 					</div>
+					<p>This game was originally created for the &quot;Emoji&quot; prompt for Replit Creates. </p>
+					<Link href='https://replit.com/@DillonB07/Replit-Creates-4-Emojigram?v=1'>
+					<button className="p-2 m-2 bg-cyan-500 rounded-md hover:scale-125 duration-150">
+						Original Repl
+						</button>
+					</Link>
+					
 				</section>
 			</main>
 		</div>

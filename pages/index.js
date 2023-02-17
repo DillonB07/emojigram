@@ -44,7 +44,14 @@ export default function index() {
 							can type it in the box besides the emoji.
 						</li>
 						<li>
-							5. Once you&apos;ve figured out all of the emojis, you can click
+							5. Struggling? You can get a hint after you&apos;ve figured out a
+							letter. This will give a high chance of telling you a different
+							letter. You also might get a little unlucky. One you&apos;ve used
+							your hint, you need to figure out another letter before getting a
+							new hint.
+						</li>
+						<li>
+							6. Once you&apos;ve figured out all of the emojis, you can click
 							the &quot;Check Answer&quot; button to see if you&apos;re correct!
 						</li>
 					</ol>
@@ -58,24 +65,26 @@ export default function index() {
 						<em>Tutorial video coming soon...</em>
 					</p>
 					<div className="flex">
-                        <Link href='/game'>
+						<Link href="/game">
 							<button className="p-2 m-2 bg-cyan-500 rounded-md hover:scale-125 duration-150">
 								Get Started!
 							</button>
-                        </Link>
+						</Link>
 						<Link href="/__repl">
 							<button className="p-2 m-2 bg-cyan-500 rounded-md hover:scale-125 duration-150">
 								View Repl!
 							</button>
 						</Link>
 					</div>
-					<p>This game was originally created for the &quot;Emoji&quot; prompt for Replit Creates. </p>
-					<Link href='https://replit.com/@DillonB07/Replit-Creates-4-Emojigram?v=1'>
-					<button className="p-2 m-2 bg-cyan-500 rounded-md hover:scale-125 duration-150">
-						Original Repl
+					<p>
+						This game was originally created for the &quot;Emoji&quot; prompt
+						for Replit Creates.{" "}
+					</p>
+					<Link href="https://replit.com/@DillonB07/Replit-Creates-4-Emojigram?v=1">
+						<button className="p-2 m-2 bg-cyan-500 rounded-md hover:scale-125 duration-150">
+							Original Repl
 						</button>
 					</Link>
-					
 				</section>
 			</main>
 		</div>

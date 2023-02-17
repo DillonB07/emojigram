@@ -218,6 +218,12 @@ export default function Home({
 						</>
 					)}
 					<textarea className="m-2 p-4 rounded-md" placeholder="Notes...." />
+					<p className="text-[#686868] dark:text-[#ABABAB]">
+						<em>
+							Note: The sentence is randomly generated and is not always
+							truthful and does not represent my beliefs.
+						</em>
+					</p>
 				</section>
 			</main>
 		</div>

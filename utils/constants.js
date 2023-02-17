@@ -483,13 +483,12 @@ export const themes = [
 		adjectives: [
 			"great",
 			"good",
-			"bad",
+			"mediocre",
 			"awesome",
 			"amazing",
 			"cool",
 			"skilful",
-			"terrible",
-			"awful",
+			"brilliant",
 		],
 		ends: [
 			"coder",

@@ -6,7 +6,7 @@ export default function index() {
 	return (
 		<div className="flex flex-col justify-center items-center text-center">
 			<Head>
-				<title>Emojigram</title>
+				<title>Em🅾️jigram 🤪</title>
 				<meta
 					name="description"
 					content="Cryptograms are boring. Let's do emojigrams!"
@@ -14,15 +14,15 @@ export default function index() {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<header className="space-y-2 m-auto my-[8vh]">
-				<h1 className="text-6xl font-bold">Emojigram</h1>
+				<h1 className="text-6xl font-bold">Em🅾️jigram 🤪</h1>
 				<h3 className="text-2xl text-[#686868] dark:text-[#ABABAB]">
-					<em>Cryptograms are boring. Let&apos;s do emojigrams!</em>
+					<em>Cryptograms are boring. 🥱 Let&apos;s do emojigrams!</em>
 				</h3>
 			</header>
 			<main className="flex flex-col justify-center items-center text-center">
-				<section className="flex-col flex justify-center items-center space-y-4 bg-[#686868] dark:bg-[#ABABAB] m-6 rounded-md p-4 max-w-xl dark:text-black text-white">
+				<section className="flex-col flex justify-center items-center space-y-4 bg-[#686868] dark:bg-[#ABABAB] m-6 rounded-md p-4 max-w-[60vw] min-w-[300px] dark:text-black text-white">
 					<h2 className="text-3xl font-semibold text-[#ABABAB] dark:text-[#686868] ">
-						<u>How to Play</u>
+						<u>How to Play 📖</u>
 					</h2>
 					<p>
 						Are you new to emojigrams? Fear, not it&apos;s extremely simple to
@@ -41,23 +41,19 @@ export default function index() {
 						<li>3. You need to figure out what each emoji represents.</li>
 						<li>
 							4. Once you&apos;ve figured out what each emoji represents, you
-							can type it in the box besides the emoji.
+							can type it in the box besides the emoji. 🕵️
 						</li>
 						<li>
-							5. Struggling? You can get a hint after you&apos;ve figured out a
-							letter. This will give a high chance of telling you a different
-							letter. You also might get a little unlucky. One you&apos;ve used
-							your hint, you need to figure out another letter before getting a
-							new hint.
+							5. Struggling? You get 3 hints to use. But beware, there is a possibility that nothing will come of it.. 😈
 						</li>
 						<li>
-							6. Once you&apos;ve figured out all of the emojis, you can click
-							the &quot;Check Answer&quot; button to see if you&apos;re correct!
+							6. Once you&apos;ve figured out all of the emojis, you can enter
+							the sentence and click the &quot;Check Answer&quot; button to see if you&apos;re correct!
 						</li>
 					</ol>
 					<br />
 					<p>
-						If you enjoy, the project, leaving a like, follow or tip on Replit
+						If you enjoy, the project, leaving a like(👍), follow(👀) or tip(💸) on Replit
 						will be appreciated and go into more projects!
 					</p>
 					<br />
@@ -67,7 +63,7 @@ export default function index() {
 					<div className="flex">
 						<Link href="/game">
 							<button className="p-2 m-2 bg-cyan-500 rounded-md hover:scale-125 duration-150">
-								Get Started!
+								Get Started! ▶️
 							</button>
 						</Link>
 						<Link href="/__repl">
@@ -78,7 +74,7 @@ export default function index() {
 					</div>
 					<p>
 						This game was originally created for the &quot;Emoji&quot; prompt
-						for Replit Creates.{" "}
+						for Replit Creates.<br/>You can check out the original repl below.
 					</p>
 					<Link href="https://replit.com/@DillonB07/Replit-Creates-4-Emojigram?v=1">
 						<button className="p-2 m-2 bg-cyan-500 rounded-md hover:scale-125 duration-150">

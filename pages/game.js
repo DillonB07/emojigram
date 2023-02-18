@@ -239,7 +239,7 @@ export default function Home({
                     </button>)}
                     </div>
 
-                    <textarea className="m-2 p-4 rounded-md" cols={2} placeholder="A space to work and make notes...." />
+                    <textarea className="m-2 p-4 rounded-md" placeholder="A space to work and make notes...." />
                     <p className="text-[#686868] dark:text-[#ABABAB] max-w-xl">
                         <em>
                             Note: The sentence is randomly generated and is not always

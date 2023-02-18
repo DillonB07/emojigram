@@ -38,7 +38,7 @@ export default function index() {
 							<strong>alphanumeric (numbers or letters)</strong> with no
 							punctuation or case sensitive characters.
 						</li>
-						<li>3. You need to figure out what each emoji represents.</li>
+						<li>3. You need to figure out what each emoji represents. Each &quot;|&quot; symbol represents a new word.</li>
 						<li>
 							4. Once you&apos;ve figured out what each emoji represents, you
 							can type it in the box besides the emoji. 🕵️

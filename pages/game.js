@@ -72,6 +72,7 @@ export default function Home({
         }
         setHintsLeft(hintsLeft - 1);
     };
+    // console.log('Sentence', sentence)
 
     const regenSentence = () => {
         // let { sentence, theme } = generateRandomSentence();
@@ -238,7 +239,7 @@ export default function Home({
                     </button>)}
                     </div>
 
-                    <textarea className="m-2 p-4 rounded-md" placeholder="Notes...." />
+                    <textarea className="m-2 p-4 rounded-md" cols={2} placeholder="A space to work and make notes...." />
                     <p className="text-[#686868] dark:text-[#ABABAB] max-w-xl">
                         <em>
                             Note: The sentence is randomly generated and is not always

@@ -1,6 +1,6 @@
 
 hidden = [".config", "package-lock.json"]
-run = "yarn dev"
+run = "yarn build && yarn start"
 
 [[hints]]
 regex = "Error \\[ERR_REQUIRE_ESM\\]"

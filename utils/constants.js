@@ -478,6 +478,7 @@ export const themes = [
 			"DynamicSquid",
 			"Zplusfour",
 			"RayhanADev",
+            "HyperHacker"
 		],
 		articles: ["is a", "thinks they can be a", "is believed to be a"],
 		adjectives: [
@@ -505,6 +506,7 @@ export const themes = [
 			"Replit has a great community",
 			"Replit Reps is a great program",
 			"The Replit Showcase is amazing",
+            'Ghostwriter is a great AI tool'
 		],
 	},
 	{
@@ -575,6 +577,8 @@ export const themes = [
 		sentences: [
 			"Python has type support",
 			"TypeScript is just JavaScript with types",
+            "Python is the best scripting language",
+            "CSS is weird and annoying to work with"
 		],
 	},
 	{

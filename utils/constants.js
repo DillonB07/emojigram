@@ -478,7 +478,7 @@ export const themes = [
 			"DynamicSquid",
 			"Zplusfour",
 			"RayhanADev",
-            "HyperHacker"
+			"HyperHacker",
 		],
 		articles: ["is a", "thinks they can be a", "is believed to be a"],
 		adjectives: [
@@ -506,7 +506,7 @@ export const themes = [
 			"Replit has a great community",
 			"Replit Reps is a great program",
 			"The Replit Showcase is amazing",
-            'Ghostwriter is a great AI tool'
+			"Ghostwriter is a great AI tool",
 		],
 	},
 	{
@@ -577,8 +577,8 @@ export const themes = [
 		sentences: [
 			"Python has type support",
 			"TypeScript is just JavaScript with types",
-            "Python is the best scripting language",
-            "CSS is weird and annoying to work with"
+			"Python is the best scripting language",
+			"CSS is weird and annoying to work with",
 		],
 	},
 	{
@@ -615,7 +615,6 @@ export const themes = [
 			"clean",
 			"old",
 			"new",
-			"old",
 		],
 		ends: [
 			"hill",
@@ -630,9 +629,24 @@ export const themes = [
 			"town",
 			"cinema",
 			"restaurant",
-			"cafe",
 		],
-		sentences: ["My school is 5 miles away", "I live near a park"],
+		sentences: [
+			"My school is 5 miles away",
+			"I live near a park",
+			"I like to watch films",
+			"I like to eat pizza",
+			"I like to play video games",
+			"I like to play football",
+			"I like to play tennis",
+			"I like to do gymnastics",
+			"I like to do parkour",
+			"I like to eat ice cream",
+			"I like to visit my family",
+			"I like to visit my friends",
+			"I like to go out for walks",
+			"I like to go out with my friends",
+			"I like to go out with my family",
+		],
 	},
 	{
 		name: "Geography",

@@ -66,7 +66,7 @@ export default function index() {
 								Get Started! ▶️
 							</button>
 						</Link>
-						<Link href="/__repl">
+						<Link href="https://replit.com/@DillonB07/Emojigram?v=1">
 							<button className="p-2 m-2 bg-cyan-500 rounded-md hover:scale-125 duration-150">
 								View Repl!
 							</button>
